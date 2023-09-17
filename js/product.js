@@ -6,6 +6,8 @@ $(function () {
     loop: true,
     nav: false,
     dots: true,
+    autoplay : true,
+    autoplayTimeout : 2000,
     smartSpeed: 800,
     responsive: {
       0: {
@@ -27,8 +29,8 @@ $(function () {
     items: 1,
     loop: true,
     nav: false,
-    dots: true,
-    margin: 10,
+    dots: false,
+    margin: 30,
     responsive: {
       0: {
         items: 1,
@@ -37,7 +39,7 @@ $(function () {
         items: 1,
       },
       1000: {
-        items: 1,
+        items: 2,
       },
     },
   });
@@ -104,7 +106,6 @@ window.addEventListener("scroll", () => {
 const header = document.querySelector("#header-section");
 const ul = document.querySelector("#header-section ul");
 const logo = document.querySelector(".logo");
-const line = document.querySelector(".line-3");
 const logoImg = document.querySelector(".logo > img");
 
 window.addEventListener("scroll", () => {
@@ -113,7 +114,6 @@ window.addEventListener("scroll", () => {
   if (scrollValue > 1) {
     header.classList.add("sticky");
     logo.classList.add("onscroll-logo");
-    line.style.display = "none";
     logo.style.setProperty("--remove", "none");
     ul.classList.add("onscroll-ul");
     header.classList.add("onscroll-header");
@@ -123,7 +123,6 @@ window.addEventListener("scroll", () => {
   else {
     header.classList.remove("sticky");
     logo.classList.remove("onscroll-logo");
-    line.style.display = "block";
     logo.style.setProperty("--remove", "block");
     ul.classList.remove("onscroll-ul");
     header.classList.remove("onscroll-header");
@@ -131,3 +130,66 @@ window.addEventListener("scroll", () => {
   }
 
 });
+
+// =============== Header Appear on Scroll Up ===================
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('#header-section').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 250);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+
+    if (st > lastScrollTop && st > navbarHeight){
+        $('header').removeClass('scroll-down').addClass('scroll-up');
+    } else {
+        if(st + $(window).height() < $(document).height()) {
+            $('header').removeClass('scroll-up').addClass('scroll-down');
+        }
+    }
+    
+    lastScrollTop = st;
+}
+
+// =============== Close Popup on Click ===================
+const popup = document.querySelector(".popup");
+const closePopup = document.querySelector(".popup-close");
+const popupBtn = document.querySelector(".popup-btn");
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    popup.style.transform = "scale(1)";
+  }, 3000)
+})
+
+closePopup.addEventListener("click", () => {
+  popup.style.transform = "scale(0)";
+  popupBtn.style.transform = "scale(1)";
+})
+
+popupBtn.addEventListener("click", () => {
+  popup.style.transform = "scale(1)";
+  popupBtn.style.transform = "scale(0)";
+})
+
+// ============== On Clicking Menu Items Sidebar Close ==================
+const sidebarItem = document.querySelectorAll(".sidebar-item");
+sidebarItem.forEach((item) => {
+  item.addEventListener("click", () => {
+    sideBar.style.left = "-100%";
+  })
+})

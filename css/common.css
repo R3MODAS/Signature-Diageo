@@ -18,11 +18,13 @@ a {
 }
 
 .roboto {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
+  font-weight: 400;
 }
 
 .roboto700{
   font-family: "Roboto Bold";
+  font-weight: 700;
 }
 
 .bebas {
@@ -53,6 +55,10 @@ a {
   background-color: #01432b;
 }
 
+.bg-greenish{
+  background-color: #2b8140;
+}
+
 .text-greenish {
   color: #2b8140;
 }
@@ -80,14 +86,12 @@ a {
   line-height: 18px;
 }
 
-
 .common-btn {
   width: 147px;
   height: 43px;
 }
 
 .common-bg {
-  background-image: url("../assets/greenbg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -130,7 +134,6 @@ a {
   .common-heading-2 {
     font-size: 70px;
   }
-
 
   .common-btn {
     width: 120px;
