@@ -1661,6 +1661,7 @@ video {
 }
 
 .ninth-carousel {
+    display: none;
     padding-bottom: 20px
 }
 
@@ -3078,8 +3079,13 @@ video {
         margin-bottom: 0
     }
 
+    .ninth-container .right {
+        display: none;
+    }
+
     .ninth-carousel {
-        padding-top: 0
+        padding-top: 0;
+        display: block;
     }
 
     #tenth-section .container {
@@ -3598,12 +3604,12 @@ video {
     }
 
     .ninth-container .right {
-        height: 100%;
-        padding-bottom: 30px
+        display: none;
     }
 
     .ninth-carousel {
-        padding-top: 0
+        padding-top: 0;
+        display: block;
     }
 
     #tenth-section .container {
